@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import cv2
-import numpy as np
 
 def brg2yuv(image):
     newImage = image
@@ -13,14 +12,23 @@ def brg2yuv(image):
     newImage[:, :, 1] = -.14713 * R - .28886 * G + .436 * B + 128
     newImage[:, :, 2] = .615 * R - .51499 * G - .10001 * B + 128
 
-    #print(newImage)
+    # print(newImage)
     return newImage
 
 image = cv2.imread('image.jpg')
 print(f'Size: {image.shape} ')
-
-yuvimg = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
-cv2.imwrite('yuvimage.jpg', yuvimg)
-cv2.imwrite('yuvimage2.jpg', brg2yuv(image))
-cv2.imwrite('hsvimage.jpg', cv2.cvtColor(image, cv2.COLOR_BGR2HSV))
-#cv2.imwrite('hsvimage2.jpg', brg2hsv(image))
+yuvImage = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
+cv2.imwrite('yuvimage.jpg', yuvImage)
+# cv2.imshow('yuv image', yuvImage)
+cv2.waitKey()
+cv2.imwrite('Y yuv.jpg', yuvImage[:, :, 0])
+cv2.imwrite('U yuv.jpg', yuvImage[:, :, 1])
+cv2.imwrite('V yuv.jpg', yuvImage[:, :, 2])
+cv2.waitKey()
+cv2.imwrite('myyuvimage.jpg', brg2yuv(image))
+hsvImage = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+cv2.imwrite('hsvimage.jpg', hsvImage)
+cv2.imwrite('H hsv.jpg', yuvImage[:, :, 0])
+cv2.imwrite('S hsv.jpg', yuvImage[:, :, 1])
+cv2.imwrite('V hsv.jpg', yuvImage[:, :, 2])
+# cv2.imwrite('hsvimage2.jpg', brg2hsv(image))
