@@ -28,4 +28,7 @@ def rotate(image, degree, shift = (0, 0)):
 
 image = cv2.imread('image.jpg')
 print(f'Size: {image.shape} ')
+
+# Image rotation
 cv2.imwrite('rotated.jpg', rotate(image, 60, (128, 128)))
+
