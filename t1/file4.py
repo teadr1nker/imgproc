@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import cv2
+import numpy as np
 
 def brg2yuv(image):
     newImage = image
@@ -19,16 +20,15 @@ image = cv2.imread('image.jpg')
 print(f'Size: {image.shape} ')
 yuvImage = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
 cv2.imwrite('yuvimage.jpg', yuvImage)
-# cv2.imshow('yuv image', yuvImage)
-cv2.waitKey()
-cv2.imwrite('Y yuv.jpg', yuvImage[:, :, 0])
-cv2.imwrite('U yuv.jpg', yuvImage[:, :, 1])
-cv2.imwrite('V yuv.jpg', yuvImage[:, :, 2])
-cv2.waitKey()
 cv2.imwrite('myyuvimage.jpg', brg2yuv(image))
+yuvImage[:, :, 0] *= 2
+yuvImage[:, :, 1] *= 3
+yuvImage[:, :, 2] //= 2
+cv2.imwrite('yuvimage2.jpg', yuvImage)
+
 hsvImage = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 cv2.imwrite('hsvimage.jpg', hsvImage)
-cv2.imwrite('H hsv.jpg', yuvImage[:, :, 0])
-cv2.imwrite('S hsv.jpg', yuvImage[:, :, 1])
-cv2.imwrite('V hsv.jpg', yuvImage[:, :, 2])
-# cv2.imwrite('hsvimage2.jpg', brg2hsv(image))
+hsvImage[:, :, 0] *= 2
+hsvImage[:, :, 1] //= 2
+hsvImage[:, :, 2] *= 4
+cv2.imwrite('hsvimage2.jpg', hsvImage)

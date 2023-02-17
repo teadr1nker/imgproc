@@ -4,11 +4,27 @@ import numpy as np
 
 image = cv2.imread('image.jpg')
 w, h, ch = image.shape
+
+# Text background
 image = cv2.rectangle(image,
                      [0, 0],
                      [130, 64],
                      [255, 255, 255],
                      -1)
+
+# Legs
+pts = np.array([[780, 1080],
+               [840, 835],
+               [1048, 835],
+               [1100, 1080]],
+               np.int32)
+
+image = cv2.polylines(image,
+                      [pts],
+                      False,
+                      [8, 30, 53],
+                      16)
+
 # Body
 image = cv2.ellipse(image,
                     [h//2, w//2],
@@ -37,6 +53,7 @@ image = cv2.fillPoly(image,
                       [pts],
                       [8, 30, 53],
                       )
+# Text
 image = cv2.putText(image,
                     'Kiwi',
                     [16, 50],
