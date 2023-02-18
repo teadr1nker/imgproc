@@ -7,10 +7,10 @@ w, h, ch = image.shape
 
 # Text background
 image = cv2.rectangle(image,
-                     [0, 0],
-                     [130, 64],
-                     [255, 255, 255],
-                     -1)
+                      [0, 0],
+                      [130, 64],
+                      [255, 255, 255],
+                      -1)
 
 # Legs
 pts = np.array([[780, 1080],
@@ -50,9 +50,9 @@ image = cv2.circle(image,
 # Beek
 pts = np.array([[1550, 300], [1550, 350], [1750, 325]], np.int32)
 image = cv2.fillPoly(image,
-                      [pts],
-                      [8, 30, 53],
-                      )
+                     [pts],
+                     [8, 30, 53],
+                     )
 # Text
 image = cv2.putText(image,
                     'Kiwi',

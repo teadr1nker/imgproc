@@ -31,4 +31,3 @@ print(f'Size: {image.shape} ')
 
 # Image rotation
 cv2.imwrite('rotated.jpg', rotate(image, 60, (128, 128)))
-

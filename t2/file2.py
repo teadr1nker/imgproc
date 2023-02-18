@@ -5,7 +5,7 @@ import numpy as np
 image = cv2.imread('image.jpg')
 rows, cols, ch = image.shape
 
-#Affine transformationr
+# Affine transformationr
 pts1 = np.float32([[50, 50],
                    [200, 50],
                    [50, 200]])
@@ -22,7 +22,7 @@ pts1 = np.float32([[50, 50],
                    [200, 50],
                    [50, 200]])
 
-pts2 = np.float32([[60, 60],
+pts2 = np.float32([[50, 50],
                    [50, 200],
                    [200, 50]])
 
