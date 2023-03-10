@@ -21,3 +21,4 @@ grayimg = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 cv2.imwrite('grayforest.jpg', grayimg)
 
 cv2.imwrite('grayforestcontrast.jpg', contrast(grayimg, 50))
+
