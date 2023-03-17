@@ -19,7 +19,6 @@ lookUpTable = np.zeros((256, 1), dtype = 'uint8' )
 for k in K:
     for x in range(256):
         lookUpTable[x] = k * x * (Xmax - x)
-        #lookUpTable[x] = np.abs(np.sin(x * solarization_const)) * 100
 
     cv2.imwrite(f'solarizedK={k}.png',
                 cv2.LUT(image, lookUpTable))
