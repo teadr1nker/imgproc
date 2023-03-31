@@ -2,21 +2,19 @@
 import cv2
 import numpy as np
 
-def processing(path):
+def processing(path, kernel):
     image = cv2.imread(path)
     name = path.split('/')[-1]
     path = '/'.join(path.split('/')[:-1])
-    # print(path, name)
 
-    kernel = np.ones((5, 5), np.uint8)
     # Erosion
 
     cv2.imwrite(path + '/erosion' + name,
-                cv2.erode(image, kernel, iterations = 2))
+                cv2.erode(image, kernel, iterations = 1))
 
     # Dialation
     cv2.imwrite(path + '/dialation' + name,
-                cv2.dilate(image, kernel, iterations = 2))
+                cv2.dilate(image, kernel, iterations = 1))
 
     # Opening
     cv2.imwrite(path + '/opening' + name,
@@ -40,7 +38,12 @@ def processing(path):
 
 
 images = ['images/forest.jpg',
-          'images/sudoku.png']
+          'images/sudoku.png',
+          'images/at.jpg']
 
-for i in images:
-    processing(i)
+kernels = [np.ones((11, 11), np.uint8),
+           np.ones((5, 5), np.uint8),
+           np.ones((7, 7), np.uint8)]
+
+for i in range(3):
+    processing(images[i], kernels[i])
