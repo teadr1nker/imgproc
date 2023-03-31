@@ -8,7 +8,7 @@ w, h, ch = image.shape
 # Text background
 image = cv2.rectangle(image,
                       [0, 0],
-                      [130, 64],
+                      [140, 64],
                       [255, 255, 255],
                       -1)
 
@@ -32,13 +32,13 @@ image = cv2.ellipse(image,
                     0,
                     0,
                     360,
-                    [12, 107, 12],
+                    [12, 24, 12],
                     -1)
 # Head
 image = cv2.circle(image,
                    [1400, 333],
                    200,
-                   [10, 97, 10],
+                   [12, 24, 12],
                    -1)
 # Eye
 image = cv2.circle(image,
