@@ -5,6 +5,8 @@ import numpy as np
 def processing(path, kernel):
     image = cv2.imread(path)
     name = path.split('/')[-1]
+    name = name.capitalize()
+    print(name)
     path = '/'.join(path.split('/')[:-1])
 
     # Erosion
