@@ -7,7 +7,9 @@ star = cv2.imread('images/star.jpg')
 starG = cv2.cvtColor(star, cv2.COLOR_BGR2GRAY)
 
 ret, thresh = cv2.threshold(starG, 200, 255, 0)
-contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+contours, hierarchy = cv2.findContours(thresh,
+                                       cv2.RETR_TREE,
+                                       cv2.CHAIN_APPROX_SIMPLE)
 contour = contours[1]
 hull = cv2.convexHull(contour)
 result = cv2.drawContours(star, [hull], -1, (0, 0, 255), 5)
@@ -22,7 +24,7 @@ for i in range(defects.shape[0]):
     start = tuple(contour[s][0])
     end = tuple(contour[e][0])
     far = tuple(contour[f][0])
-    cv2.line(star, start, end, [0, 255, 0], 3)  # Погрешности аппроксимации
+    cv2.line(star, start, end, [0, 255, 0], 3)
     cv2.circle(star, far, 5, [0, 0, 255], -1)
 
 cv2.imwrite("images/starDeffects.jpg", star)
@@ -38,7 +40,7 @@ cv2.circle(star, center, radius, (0, 255, 0), 3)
 
 rect = cv2.minAreaRect(contour)
 box = cv2.boxPoints(rect)
-box = np.int0(box)
+box = np.intp(box)
 cv2.drawContours(star, [box], 0, (0, 0, 255), 3)
 
 # ellipse
