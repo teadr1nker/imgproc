@@ -53,7 +53,8 @@ rows, cols = star.shape[:2]
 [vx, vy, x, y] = cv2.fitLine(contour, cv2.DIST_L2, 0, 0.01, 0.01)
 lefty = int((-x*vy/vx) + y)
 righty = int(((cols-x)*vy/vx)+y)
-cv2.line(star, (cols-1, righty), (0, lefty), (0, 255, 0), 2)
+p1, p2 = (cols-1, righty), (0, lefty)
+cv2.line(star, p1, p2, (0, 255, 0), 2)
 
 
 cv2.imwrite("images/starFigures.jpg", star)
