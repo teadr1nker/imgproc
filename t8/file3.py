@@ -25,7 +25,7 @@ def findMatches(image, suffix='a'):
     matchesMask = [[0, 0] for i in range(len(matches))]
 
     for i,(m, n) in enumerate(matches):
-        if m.distance < .7 * n.distance:
+        if m.distance < .75 * n.distance:
             matchesMask[i] = [1, 0]
 
     drawParams = dict(matchColor = (0, 255, 0),

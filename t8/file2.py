@@ -19,6 +19,12 @@ keyPoints, dst = sift.detectAndCompute(imageG, None)
 imageKP = cv.drawKeypoints(imageG, keyPoints, image)
 sampleKP = cv.drawKeypoints(sampleG, keyPointsSample, sample)
 
+cv.imshow('sample', sampleKP)
+cv.waitKey()
+
+cv.imshow('image', imageKP)
+cv.waitKey()
+
 print('image')
 for point in keyPoints:
     print(f'coords: {point.pt} angle: {point.angle}')
@@ -40,8 +46,8 @@ imageSIFT = cv.drawMatchesKnn(sample ,keyPointsSample,
                          good, None,
                          flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 
-# cv.imshow('matches', imageMatches)
-# cv.waitKey()
+cv.imshow('matches BF', imageSIFT)
+cv.waitKey()
 
 # 3.3
 FLANN_INDEX_KDTREE = 1
@@ -54,7 +60,7 @@ matches = flann.knnMatch(dstS, dst, k=2)
 matchesMask = [[0, 0] for i in range(len(matches))]
 
 for i, (m, n) in enumerate(matches):
-    if m.distance < .7 * n.distance:
+    if m.distance < .75 * n.distance:
         matchesMask[i]=[1, 0]
 
 drawParams = dict(matchColor = (0 ,255 ,0),
@@ -66,5 +72,5 @@ imageFLANN = cv.drawMatchesKnn(sample ,keyPointsSample,
                   image, keyPoints,
                   matches, None, **drawParams)
 
-cv.imshow('matches', imageFLANN)
+cv.imshow('matches FLANN', imageFLANN)
 cv.waitKey()
