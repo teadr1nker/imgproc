@@ -10,7 +10,7 @@ ret, thresh = cv2.threshold(imageG, 200, 255, cv2.THRESH_BINARY)
 
 edges = cv2.Canny(thresh, 100, 200, apertureSize=5)
 
-lines = cv2.HoughLines(edges, 1, np.pi/90 ,128)
+lines = cv2.HoughLines(edges, 1, np.pi/90, 128)
 
 if lines is not None:
     for i in range(0, len(lines)):

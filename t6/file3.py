@@ -8,7 +8,7 @@ mask = np.zeros(carriage.shape[:2], np.uint8)
 print(carriage.shape)
 mask[150:700, 135:610] = 255
 masked = cv2.bitwise_and(carriageG, carriageG, mask = mask)
-ret, thresh = cv2.threshold(masked, 120, 255, 0)
+ret, thresh = cv2.threshold(masked, 128, 255, 0)
 contours, hierarchy = cv2.findContours(thresh,
                                        mode=cv2.RETR_TREE,
                                        method=cv2.CHAIN_APPROX_NONE)

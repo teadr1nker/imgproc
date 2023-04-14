@@ -35,4 +35,3 @@ textBG = contours[0]
 area = cv2.contourArea(textBG)
 perimeter = cv2.arcLength(textBG, True)
 print(f'Area:{area}\nPerimiter{perimeter}')
-

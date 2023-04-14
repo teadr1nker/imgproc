@@ -18,6 +18,6 @@ loc = np.where(squares >= threshold)
 for pt in zip(*loc[::-1]):
     cv2.rectangle(image, pt,
                   (pt[0]+w, pt[1]+h),
-                  (0,0,0), 2)
+                  (0, 0, 0), 2)
 
 cv2.imwrite('images/squares.jpg', image)
