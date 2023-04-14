@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import cv2 as cv
-import numpy as np
 
 # 2
 image = cv.imread('images/windows.jpg')
@@ -61,16 +60,16 @@ matchesMask = [[0, 0] for i in range(len(matches))]
 
 for i, (m, n) in enumerate(matches):
     if m.distance < .75 * n.distance:
-        matchesMask[i]=[1, 0]
+        matchesMask[i] = [1, 0]
 
-drawParams = dict(matchColor = (0 ,255 ,0),
-                   singlePointColor = (255, 0, 0),
-                   matchesMask = matchesMask,
-                   flags = cv.DrawMatchesFlags_DEFAULT)
+drawParams = dict(matchColor = (0, 255, 0),
+                  singlePointColor = (255, 0, 0),
+                  matchesMask = matchesMask,
+                  flags = cv.DrawMatchesFlags_DEFAULT)
 
-imageFLANN = cv.drawMatchesKnn(sample ,keyPointsSample,
-                  image, keyPoints,
-                  matches, None, **drawParams)
+imageFLANN = cv.drawMatchesKnn(sample, keyPointsSample,
+                               image, keyPoints,
+                               matches, None, **drawParams)
 
 cv.imshow('matches FLANN', imageFLANN)
 cv.waitKey()
