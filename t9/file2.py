@@ -7,7 +7,7 @@ def findFace(image):
     imageG = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     # finding faces
     faces = face_cascade_db.detectMultiScale(imageG, scaleFactor=1.1, minNeighbors=19)
-    # drawinf rectangles
+    # drawing rectangles
     for (x,y,w,h) in faces:
         cv.rectangle(image, (x,y), (x+w, y+h), (0, 255, 0), 2)
 
