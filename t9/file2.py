@@ -6,10 +6,19 @@ def findFace(image):
     face_cascade_db = cv.CascadeClassifier(cv.data.haarcascades+'haarcascade_frontalface_default.xml')
     imageG = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     # finding faces
-    faces = face_cascade_db.detectMultiScale(imageG, scaleFactor=1.1, minNeighbors=19)
+    faces = face_cascade_db.detectMultiScale(imageG, scaleFactor=1.1, minNeighbors=16)
     # drawing rectangles
-    for (x,y,w,h) in faces:
-        cv.rectangle(image, (x,y), (x+w, y+h), (0, 255, 0), 2)
+    for (x, y, w, h) in faces:
+        cv.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+        image = cv.putText(image,
+                           f'Face',
+                           [x, y - 32],
+                           cv.FONT_HERSHEY_SIMPLEX,
+                           1,
+                           [0, 255, 0],
+                           4,
+                           cv.LINE_AA)
 
     return image
 
