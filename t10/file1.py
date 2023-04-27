@@ -9,9 +9,9 @@ def drawFigures(pic, x1, x2, y1, y2):
     clusterS = []
     clusterT = []
     for i in range(0, 100):
-        clusterS.append([np.random.randint(250, 550),
+        clusterS.append([np.random.randint(10, 550),
                          np.random.randint(x1, x2)])
-        clusterT.append([np.random.randint(250, 550),
+        clusterT.append([np.random.randint(250, 790),
                          np.random.randint(y1 , y2)])
 
     imageCenters = []
@@ -95,7 +95,7 @@ whiteBox.fill(255)
 # generate images
 image1, imageCenters1 = drawFigures(whiteBox, 0, 225, 325, 550)
 image2, imageCenters2 = drawFigures(whiteBox, 0, 290, 300, 550)
-image3, imageCenters3 = drawFigures(whiteBox, 0, 310, 290, 550)
+image3, imageCenters3 = drawFigures(whiteBox, 0, 320, 280, 550)
 
 # save images
 cv.imwrite('images/image1.jpg', image1)
