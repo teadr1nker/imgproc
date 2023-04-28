@@ -56,7 +56,7 @@ def knnCircles(pic, centers, number=1):
     for i in range(3):
         for j in range(3):
             x, y = 350 + j*100, 200 + i * 100
-            cv.circle(image, (x, y), 5, (0, 255, 0), -1)
+            cv.circle(image, (x, y), 3, (0, 255, 0), -1)
             circleCenters.append([x, y])
 
     knn = cv.ml.KNearest_create()
