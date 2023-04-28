@@ -55,7 +55,7 @@ def knnCircles(pic, centers, number=1):
     circleCenters = []
     for i in range(3):
         for j in range(3):
-            x, y =200 + j*100, 200 + i * 100
+            x, y = 350 + j*100, 200 + i * 100
             cv.circle(image, (x, y), 5, (0, 255, 0), -1)
             circleCenters.append([x, y])
 
