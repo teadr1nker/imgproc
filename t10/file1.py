@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import numpy as np
 import cv2 as cv
-import matplotlib.pyplot as plt
 
 # drawing images with figures
 def drawFigures(pic, x1, x2, y1, y2):
@@ -12,7 +11,7 @@ def drawFigures(pic, x1, x2, y1, y2):
         clusterS.append([np.random.randint(10, 550),
                          np.random.randint(x1, x2)])
         clusterT.append([np.random.randint(250, 790),
-                         np.random.randint(y1 , y2)])
+                         np.random.randint(y1, y2)])
 
     imageCenters = []
 
@@ -39,10 +38,10 @@ def splitSample(pic, centers, number = 1):
             color = (255, 0, 0)
         else:
             color = (0, 0, 255)
-        cv.circle(image, (int(point[0]),int(point[1])),
+        cv.circle(image, (int(point[0]), int(point[1])),
                   10, color, 1)
     for point in center:
-        cv.circle(image, (int(point[0]),int(point[1])),
+        cv.circle(image, (int(point[0]), int(point[1])),
                   6, (0, 255, 0), -1)
 
     cv.imwrite(f'images/classes{number}.png', image)

@@ -48,8 +48,5 @@ while True:
     frameNumber += 1
     out.write(frame)
 
-
-
 cap.release()
 out.release()
-
