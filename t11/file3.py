@@ -13,7 +13,7 @@ from tensorflow.python.keras.layers import Activation, Dropout, Flatten, Dense
 from keras.applications import VGG16
 
 # Каталог с данными для обучения
-train_dir = 'images/numbers/train'
+train_dir = 'images/numbers100/train'
 # Каталог с данными для проверки
 val_dir = 'images/numbers/val'
 # Размеры изображения
