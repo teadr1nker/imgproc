@@ -13,7 +13,7 @@ from tensorflow.python.keras.layers import Activation, Dropout, Flatten, Dense
 from keras.applications import VGG16
 
 # Каталог с данными для обучения
-train_dir = 'images/numbers100/train'
+train_dir = 'images/numbers/train'
 # Каталог с данными для проверки
 val_dir = 'images/numbers/val'
 # Размеры изображения
@@ -22,7 +22,7 @@ img_width, img_height = 100, 100
 # backend Tensorflow, channels_last
 input_shape = (img_width, img_height, 3)
 # Количество эпох
-epochs = 8
+epochs = 16
 # Размер мини-выборки
 batch_size = 32
 # Количество изображений для обучения
