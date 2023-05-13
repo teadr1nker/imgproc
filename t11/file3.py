@@ -4,6 +4,7 @@ try:
     trainSamples = int(sys.argv[1])
 except:
     trainSamples = 800
+
 # original script CatsVsDogs
 from keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.keras.models import Sequential
@@ -20,7 +21,7 @@ img_width, img_height = 100, 100
 # backend Tensorflow, channels_last
 input_shape = (img_width, img_height, 3)
 # Количество эпох
-epochs = 16
+epochs = 8
 # Размер мини-выборки
 batch_size = 32
 # Количество изображений для обучения
@@ -57,12 +58,12 @@ datagen = ImageDataGenerator(rescale=1. / 255)
 train_generator = datagen.flow_from_directory(train_dir,
                                               target_size=(img_width, img_height),
                                               batch_size=batch_size,
-                                              class_mode='binary')
+                                              class_mode='sparse')
 # Генератор данных для проверки на основе изображений из каталога
 val_generator = datagen.flow_from_directory(val_dir,
                                             target_size=(img_width, img_height),
                                             batch_size=batch_size,
-                                            class_mode='binary')
+                                            class_mode='sparse')
 
 # Обучаем модель с использованием генераторов
 # train_generator - генератор данных для обучения
@@ -86,7 +87,7 @@ for i in range(5):
     test_generator = datagen.flow_from_directory(test_dir,
                                                  target_size=(img_width, img_height),
                                                  batch_size=batch_size,
-                                                 class_mode='binary')
+                                                 class_mode='sparse')
     scores = model.evaluate_generator(test_generator, nb_test_samples // batch_size)
     print(f'{i} accuracy {scores[1]}')
     test_dir = f'images/numbers/test{i+2}'
