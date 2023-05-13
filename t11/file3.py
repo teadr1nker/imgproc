@@ -10,8 +10,6 @@ from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.python.keras.layers import Activation, Dropout, Flatten, Dense
 
-from keras.applications import VGG16
-
 # Каталог с данными для обучения
 train_dir = 'images/numbers/train'
 # Каталог с данными для проверки
@@ -32,20 +30,20 @@ nb_validation_samples = 640
 # Количество изображений для тестирования
 nb_test_samples = 80
 
-vgg16_net = VGG16(weights='imagenet',
-                  include_top=False,
-                  input_shape=(100, 100, 3))
-
-vgg16_net.trainable = False
-
-print(vgg16_net.summary())
-
 model = Sequential()
-model.add(vgg16_net)
+model.add(Conv2D(32, (3, 3), input_shape=input_shape))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(32, (3, 3)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(64, (3, 3)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 model.add(Dense(256))
 model.add(Activation('relu'))
-model.add(Dropout(0.7))
+model.add(Dropout(0.8))
 model.add(Dense(1))
 model.add(Activation('sigmoid'))
 
