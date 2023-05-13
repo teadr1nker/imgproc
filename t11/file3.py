@@ -8,8 +8,7 @@ except:
 # original script CatsVsDogs
 from keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import Conv2D, MaxPooling2D
-from tensorflow.python.keras.layers import Activation, Dropout, Flatten, Dense
+from tensorflow.python.keras.layers import Dense, Conv2D, MaxPooling2D, Activation, Flatten, Dropout
 
 # Каталог с данными для обучения
 train_dir = 'images/numbers/train'
@@ -21,7 +20,7 @@ img_width, img_height = 100, 100
 # backend Tensorflow, channels_last
 input_shape = (img_width, img_height, 3)
 # Количество эпох
-epochs = 8
+epochs = 4
 # Размер мини-выборки
 batch_size = 32
 # Количество изображений для обучения
@@ -32,7 +31,7 @@ nb_validation_samples = 640
 nb_test_samples = 80
 
 model = Sequential()
-model.add(Conv2D(32, (3, 3), input_shape=input_shape))
+model.add(Conv2D(32, (3, 3)))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Conv2D(32, (3, 3)))
@@ -42,13 +41,14 @@ model.add(Conv2D(64, (3, 3)))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
-model.add(Dense(256))
+model.add(Dense(64))
 model.add(Activation('relu'))
-model.add(Dropout(0.8))
-model.add(Dense(1))
-model.add(Activation('sigmoid'))
+model.add(Dropout(0.5))
+model.add(Dense(4))
+model.add(Activation('softmax'))
 
-model.compile(loss='binary_crossentropy',
+
+model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
 
@@ -58,12 +58,12 @@ datagen = ImageDataGenerator(rescale=1. / 255)
 train_generator = datagen.flow_from_directory(train_dir,
                                               target_size=(img_width, img_height),
                                               batch_size=batch_size,
-                                              class_mode='sparse')
+                                              class_mode='categorical')
 # Генератор данных для проверки на основе изображений из каталога
 val_generator = datagen.flow_from_directory(val_dir,
                                             target_size=(img_width, img_height),
                                             batch_size=batch_size,
-                                            class_mode='sparse')
+                                            class_mode='categorical')
 
 # Обучаем модель с использованием генераторов
 # train_generator - генератор данных для обучения
@@ -87,7 +87,7 @@ for i in range(5):
     test_generator = datagen.flow_from_directory(test_dir,
                                                  target_size=(img_width, img_height),
                                                  batch_size=batch_size,
-                                                 class_mode='sparse')
+                                                 class_mode='categorical')
     scores = model.evaluate_generator(test_generator, nb_test_samples // batch_size)
     print(f'{i} accuracy {scores[1]}')
     test_dir = f'images/numbers/test{i+2}'
