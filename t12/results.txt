@@ -1,0 +1,285 @@
+a
+Xception
+              precision    recall  f1-score   support
+
+           0       0.20      0.19      0.20        21
+           1       0.10      0.09      0.10        22
+           2       0.30      0.38      0.33        16
+           3       0.30      0.29      0.29        21
+
+    accuracy                           0.23        80
+   macro avg       0.23      0.24      0.23        80
+weighted avg       0.22      0.23      0.22        80
+[[4 8 4 5]
+ [4 2 8 8]
+ [5 4 6 1]
+ [7 6 2 6]]ResNet152V2
+              precision    recall  f1-score   support
+
+           0       0.40      0.44      0.42        18
+           1       0.35      0.33      0.34        21
+           2       0.40      0.38      0.39        21
+           3       0.20      0.20      0.20        20
+
+    accuracy                           0.34        80
+   macro avg       0.34      0.34      0.34        80
+weighted avg       0.34      0.34      0.34        80
+[[8 3 4 3]
+ [6 7 3 5]
+ [3 2 8 8]
+ [3 8 5 4]]InceptionResNetV2
+              precision    recall  f1-score   support
+
+           0       0.25      0.23      0.24        22
+           1       0.15      0.15      0.15        20
+           2       0.30      0.32      0.31        19
+           3       0.05      0.05      0.05        19
+
+    accuracy                           0.19        80
+   macro avg       0.19      0.19      0.19        80
+weighted avg       0.19      0.19      0.19        80
+[[5 6 3 8]
+ [4 3 5 8]
+ [7 3 6 3]
+ [4 8 6 1]]DenseNet201
+              precision    recall  f1-score   support
+
+           0       0.20      0.18      0.19        22
+           1       0.40      0.42      0.41        19
+           2       0.25      0.25      0.25        20
+           3       0.20      0.21      0.21        19
+
+    accuracy                           0.26        80
+   macro avg       0.26      0.27      0.26        80
+weighted avg       0.26      0.26      0.26        80
+[[4 4 7 7]
+ [4 8 4 3]
+ [6 3 5 6]
+ [6 5 4 4]]NASNetLarge
+              precision    recall  f1-score   support
+
+           0       0.25      0.23      0.24        22
+           1       0.25      0.25      0.25        20
+           2       0.20      0.20      0.20        20
+           3       0.25      0.28      0.26        18
+
+    accuracy                           0.24        80
+   macro avg       0.24      0.24      0.24        80
+weighted avg       0.24      0.24      0.24        80
+[[5 8 5 4]
+ [4 5 7 4]
+ [6 3 4 7]
+ [5 4 4 5]]b
+Xception
+              precision    recall  f1-score   support
+
+           0       0.15      0.14      0.14        22
+           1       0.35      0.37      0.36        19
+           2       0.10      0.11      0.11        18
+           3       0.25      0.24      0.24        21
+
+    accuracy                           0.21        80
+   macro avg       0.21      0.21      0.21        80
+weighted avg       0.21      0.21      0.21        80
+[[3 4 9 6]
+ [3 7 5 4]
+ [7 4 2 5]
+ [7 5 4 5]]ResNet152V2
+              precision    recall  f1-score   support
+
+           0       0.25      0.25      0.25        20
+           1       0.40      0.40      0.40        20
+           2       0.20      0.20      0.20        20
+           3       0.35      0.35      0.35        20
+
+    accuracy                           0.30        80
+   macro avg       0.30      0.30      0.30        80
+weighted avg       0.30      0.30      0.30        80
+[[5 3 7 5]
+ [4 8 4 4]
+ [7 5 4 4]
+ [4 4 5 7]]InceptionResNetV2
+              precision    recall  f1-score   support
+
+           0       0.25      0.29      0.27        17
+           1       0.30      0.27      0.29        22
+           2       0.40      0.36      0.38        22
+           3       0.35      0.37      0.36        19
+
+    accuracy                           0.33        80
+   macro avg       0.33      0.32      0.32        80
+weighted avg       0.33      0.33      0.33        80
+[[5 7 3 2]
+ [5 6 4 7]
+ [7 3 8 4]
+ [3 4 5 7]]DenseNet201
+              precision    recall  f1-score   support
+
+           0       0.30      0.30      0.30        20
+           1       0.30      0.29      0.29        21
+           2       0.20      0.24      0.22        17
+           3       0.25      0.23      0.24        22
+
+    accuracy                           0.26        80
+   macro avg       0.26      0.26      0.26        80
+weighted avg       0.27      0.26      0.26        80
+[[6 4 3 7]
+ [2 6 8 5]
+ [5 5 4 3]
+ [7 5 5 5]]NASNetLarge
+              precision    recall  f1-score   support
+
+           0       0.25      0.25      0.25        20
+           1       0.25      0.25      0.25        20
+           2       0.25      0.25      0.25        20
+           3       0.40      0.40      0.40        20
+
+    accuracy                           0.29        80
+   macro avg       0.29      0.29      0.29        80
+weighted avg       0.29      0.29      0.29        80
+[[5 3 7 5]
+ [6 5 4 5]
+ [5 8 5 2]
+ [4 4 4 8]]c
+Xception
+              precision    recall  f1-score   support
+
+           0       0.35      0.32      0.33        22
+           1       0.15      0.14      0.14        22
+           2       0.20      0.22      0.21        18
+           3       0.15      0.17      0.16        18
+
+    accuracy                           0.21        80
+   macro avg       0.21      0.21      0.21        80
+weighted avg       0.22      0.21      0.21        80
+[[7 3 4 8]
+ [6 3 7 6]
+ [4 7 4 3]
+ [3 7 5 3]]ResNet152V2
+              precision    recall  f1-score   support
+
+           0       0.25      0.25      0.25        20
+           1       0.25      0.25      0.25        20
+           2       0.25      0.24      0.24        21
+           3       0.15      0.16      0.15        19
+
+    accuracy                           0.23        80
+   macro avg       0.23      0.22      0.22        80
+weighted avg       0.23      0.23      0.23        80
+[[5 6 4 5]
+ [4 5 6 5]
+ [6 3 5 7]
+ [5 6 5 3]]InceptionResNetV2
+              precision    recall  f1-score   support
+
+           0       0.30      0.32      0.31        19
+           1       0.20      0.20      0.20        20
+           2       0.35      0.33      0.34        21
+           3       0.10      0.10      0.10        20
+
+    accuracy                           0.24        80
+   macro avg       0.24      0.24      0.24        80
+weighted avg       0.24      0.24      0.24        80
+[[6 4 1 8]
+ [3 4 8 5]
+ [2 7 7 5]
+ [9 5 4 2]]DenseNet201
+              precision    recall  f1-score   support
+
+           0       0.15      0.13      0.14        23
+           1       0.25      0.29      0.27        17
+           2       0.10      0.10      0.10        20
+           3       0.20      0.20      0.20        20
+
+    accuracy                           0.17        80
+   macro avg       0.17      0.18      0.18        80
+weighted avg       0.17      0.17      0.17        80
+[[3 6 8 6]
+ [4 5 5 3]
+ [6 5 2 7]
+ [7 4 5 4]]NASNetLarge
+              precision    recall  f1-score   support
+
+           0       0.25      0.22      0.23        23
+           1       0.15      0.17      0.16        18
+           2       0.25      0.26      0.26        19
+           3       0.25      0.25      0.25        20
+
+    accuracy                           0.23        80
+   macro avg       0.23      0.22      0.22        80
+weighted avg       0.23      0.23      0.23        80
+[[5 6 5 7]
+ [4 3 6 5]
+ [4 7 5 3]
+ [7 4 4 5]]d
+Xception
+              precision    recall  f1-score   support
+
+           0       0.40      0.36      0.38        22
+           1       0.15      0.15      0.15        20
+           2       0.35      0.39      0.37        18
+           3       0.20      0.20      0.20        20
+
+    accuracy                           0.28        80
+   macro avg       0.28      0.28      0.27        80
+weighted avg       0.28      0.28      0.28        80
+[[8 6 3 5]
+ [4 3 6 7]
+ [3 4 7 4]
+ [5 7 4 4]]ResNet152V2
+              precision    recall  f1-score   support
+
+           0       0.25      0.24      0.24        21
+           1       0.30      0.32      0.31        19
+           2       0.20      0.19      0.20        21
+           3       0.15      0.16      0.15        19
+
+    accuracy                           0.23        80
+   macro avg       0.23      0.23      0.23        80
+weighted avg       0.23      0.23      0.22        80
+[[5 5 6 5]
+ [2 6 4 7]
+ [6 6 4 5]
+ [7 3 6 3]]InceptionResNetV2
+              precision    recall  f1-score   support
+
+           0       0.15      0.12      0.14        24
+           1       0.20      0.21      0.21        19
+           2       0.25      0.28      0.26        18
+           3       0.10      0.11      0.10        19
+
+    accuracy                           0.17        80
+   macro avg       0.17      0.18      0.18        80
+weighted avg       0.17      0.17      0.17        80
+[[3 8 7 6]
+ [7 4 1 7]
+ [4 4 5 5]
+ [6 4 7 2]]DenseNet201
+              precision    recall  f1-score   support
+
+           0       0.35      0.33      0.34        21
+           1       0.25      0.26      0.26        19
+           2       0.10      0.10      0.10        21
+           3       0.15      0.16      0.15        19
+
+    accuracy                           0.21        80
+   macro avg       0.21      0.21      0.21        80
+weighted avg       0.21      0.21      0.21        80
+[[7 2 7 5]
+ [5 5 6 3]
+ [6 4 2 9]
+ [2 9 5 3]]NASNetLarge
+              precision    recall  f1-score   support
+
+           0       0.25      0.26      0.26        19
+           1       0.25      0.24      0.24        21
+           2       0.30      0.29      0.29        21
+           3       0.20      0.21      0.21        19
+
+    accuracy                           0.25        80
+   macro avg       0.25      0.25      0.25        80
+weighted avg       0.25      0.25      0.25        80
+[[5 4 7 3]
+ [7 5 4 5]
+ [2 5 6 8]
+ [6 6 3 4]]
