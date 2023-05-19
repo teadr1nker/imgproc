@@ -48,7 +48,8 @@ train_generator = datagen.flow_from_directory(train_dir,
 val_generator = datagen.flow_from_directory(val_dir,
                                             target_size=(img_width, img_height),
                                             batch_size=batch_size,
-                                            class_mode='categorical')
+                                            class_mode='categorical',
+                                            shuffle=False,)
 
 NNs = [apps.Xception(weights='imagenet',
                      include_top=False,
@@ -111,7 +112,8 @@ for size in sizes:
         test_generator = datagen.flow_from_directory(test_dir,
                                                      target_size=(img_width, img_height),
                                                      batch_size=batch_size,
-                                                     class_mode='categorical')
+                                                     class_mode='categorical',
+                                                     shuffle=False,)
         report = model.evaluate_generator(test_generator, nb_test_samples // batch_size)
         predictions = model.predict_generator(test_generator, nb_test_samples // batch_size).argmax(axis=1)
         sheet.append(['metrics'])
