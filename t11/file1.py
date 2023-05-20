@@ -20,9 +20,7 @@ for number in numbers:
                    [0, 0, 0],
                    2,
                    cv.LINE_AA)
-        if i < 400:
-            image = cv.rotate(image, cv.ROTATE_90_CLOCKWISE)
-        elif i >=810:
+        if i % 2 == 0:
             image = cv.rotate(image, cv.ROTATE_90_CLOCKWISE)
 
         if i < 800:
