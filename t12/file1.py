@@ -9,24 +9,28 @@ from collections import OrderedDict
 import pandas as pd
 from keras import backend as K
 
+
 def recall_m(y_true, y_pred):
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
     possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
-    recall = true_positives / (possible_positives + K.epsilon())
+    recall = true_positives / possible_positives
     return recall
+
 
 def precision_m(y_true, y_pred):
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
     predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
-    precision = true_positives / (predicted_positives + K.epsilon())
+    precision = true_positives / predicted_positives
     return precision
+
 
 def f1_m(y_true, y_pred):
     precision = precision_m(y_true, y_pred)
     recall = recall_m(y_true, y_pred)
-    return 2*((precision*recall)/(precision+recall+K.epsilon()))
+    return 2*((precision*recall)/(precision+recall))
 
-names = ['Xception', 'ResNet152V2', 'InceptionResNetV2','DenseNet201', 'NASNetLarge']
+
+names = ['Xception', 'ResNet152V2', 'InceptionResNetV2', 'DenseNet201', 'NASNetLarge']
 result = OrderedDict()
 metrics = ['loss', 'accuracy', 'f1_score', 'precision', 'recall']
 
@@ -35,7 +39,7 @@ val_dir = 'images/numbers/val'
 test_dir = 'images/numbers/test'
 img_width, img_height = 100, 100
 input_shape = (img_width, img_height, 3)
-batch_size = 10
+batch_size = 20
 epochs = 4
 classes = [0, 1, 3, 8]
 # results = open("results.txt", "w")
@@ -55,27 +59,27 @@ NNs = [apps.Xception(weights='imagenet',
                      include_top=False,
                      input_shape=input_shape,
                      classes=4),
-       apps.ResNet152V2(weights='imagenet',
-                        include_top=False,
-                        input_shape=input_shape,
-                        classes=4),
-       apps.InceptionResNetV2(weights='imagenet',
-                              include_top=False,
-                              input_shape=input_shape,
-                              classes=4),
-       apps.DenseNet201(weights='imagenet',
-                        include_top=False,
-                        input_shape=input_shape,
-                        classes=4),
-       apps.NASNetLarge(weights='imagenet',
-                        include_top=False,
-                        input_shape=input_shape,
-                        classes=4),
+       # apps.ResNet152V2(weights='imagenet',
+       #                  include_top=False,
+       #                  input_shape=input_shape,
+       #                  classes=4),
+       # apps.InceptionResNetV2(weights='imagenet',
+       #                        include_top=False,
+       #                        input_shape=input_shape,
+       #                        classes=4),
+       # apps.DenseNet201(weights='imagenet',
+       #                  include_top=False,
+       #                  input_shape=input_shape,
+       #                  classes=4),
+       # apps.NASNetLarge(weights='imagenet',
+       #                  include_top=False,
+       #                  input_shape=input_shape,
+       #                  classes=4),
        ]
 sizes = [('a', 100, 15, 20),
-         ('b', 250, 30, 20),
-         ('c', 400, 60, 20),
-         ('d', 700, 100, 20),
+         # ('b', 250, 30, 20),
+         # ('c', 400, 60, 20),
+         # ('d', 700, 100, 20),
          ]
 
 for size in sizes:
@@ -89,13 +93,13 @@ for size in sizes:
     additionalSheet = [[''] + metrics]
 
     for i, nn in enumerate(NNs):
-        #print(nn.summary())
+        # print(nn.summary())
         sheet.append([names[i]])
         nn.trainable = False
         model = Sequential()
         model.add(nn)
         model.add(Flatten())
-        model.add(Dense(256))
+        model.add(Dense(128))
         model.add(Activation('relu'))
         model.add(Dropout(0.5))
         model.add(Dense(4))
@@ -115,18 +119,28 @@ for size in sizes:
                                                      class_mode='categorical',
                                                      shuffle=False,)
         report = model.evaluate_generator(test_generator, nb_test_samples // batch_size)
+        print('metrics', report)
+        test_generator = datagen.flow_from_directory(test_dir,
+                                                     target_size=(img_width, img_height),
+                                                     batch_size=batch_size,
+                                                     class_mode='categorical',
+                                                     shuffle=False,)
         predictions = model.predict_generator(test_generator, nb_test_samples // batch_size).argmax(axis=1)
+        # predictions = model.predict(test_generator, batch_size).argmax(axis=1)
         sheet.append(['metrics'])
         sheet.append(metrics)
         sheet.append(report)
+        print(predictions)
+        print(test_generator.classes)
 
         additionalSheet.append([names[i]] + report)
 
         # report = classification_report(predictions, test_generator.classes, labels = classes, output_dict=True)
         report2 = confusion_matrix(predictions, test_generator.classes)
+        print(report2)
 
         # workaround 1
-        #print(report)
+        # print(report)
         # df = pd.DataFrame(report).transpose()
         # sheet.append(['metrics'])
         # sheet.append(['classes'] + list(df.columns))
@@ -141,7 +155,7 @@ for size in sizes:
         #     sheet.append(row)
 
         # workaround 2
-        print(report2)
+        # print(report2)
         sheet.append(['confusion matrix'])
         for row in report2:
             row = list(row)
